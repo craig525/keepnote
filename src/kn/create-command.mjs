@@ -22,7 +22,7 @@ function slugifyTitleToFilename(title) {
   // Step 4: Trim leading/trailing dashes
   const slug = dashesCollapsed.replace(/^-+|-+$/g, '')
 
-  return `${datePrefix}_${slug}.md`
+  return `${datePrefix}_${slug}.rst`
 }
 
 /**
@@ -36,7 +36,7 @@ export default function createNote(title, notesPath) {
   const filename = slugifyTitleToFilename(title)
   const filepath = path.join(notesPath, filename)
 
-  const content = `# ${title}\n\n\n`
+  const content = `###########\n${title}\n##########\n\n\n`
   fs.writeFileSync(filepath, content)
   console.log(`Created note: ${filepath}`)
 
